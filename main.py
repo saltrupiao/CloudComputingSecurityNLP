@@ -29,8 +29,8 @@ def visualize_data2():
     nlp = spacy.load('en_core_web_sm')
     nlp.add_pipe('spacytextblob')
 
-    file_in = pd.read_csv("cc_urls.csv")
-    ccURLs = file_in["Address"].toList()
+    file_in = pd.read_csv("cc_urls_v1.csv")
+    ccURLs = file_in["Address"].tolist()
     url_sent_score = []
     url_sent_label = []
     total_pos = []
@@ -84,11 +84,11 @@ def visualize_data2():
     file_in.to_csv("sentiment.csv")
     file_in
 
-    print(doc._.blob.polarity)
-    print(doc._.blob.subjectivity)
-    print(doc._.blob.sentiment_assessments.assessments)
-    sentence_spans = list(doc.sents)
-    displacy.serve(sentence_spans, style='ent')
+    # print(doc._.blob.polarity)
+    # print(doc._.blob.subjectivity)
+    # print(doc._.blob.sentiment_assessments.assessments)
+    # sentence_spans = list(doc.sents)
+    # displacy.serve(sentence_spans, style='ent')
 
 
 def main():
