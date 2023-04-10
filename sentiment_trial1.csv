@@ -1,0 +1,6 @@
+,Address,Sentiment Score,Sentiment Label,Positive Words,Negative Words
+0,https://www.trustradius.com/encryption-key-management,[0.18],['Positive'],"['top, fairly, first, legal, best, much, favorite, kind, absolutely, highly, significant, many, real, great, rare, most, safe, no, good, whole, better, new, suitably, amazing']","['usually, corrupt, mean, few, black, center, absolutely']"
+1,https://www.g2.com/products/google-cloud-key-management-service/competitors/alternatives,,,,
+2,https://sourceforge.net/software/key-management/,,,,
+3,https://www.reddit.com/r/aws/comments/izpybb/aws_managed_vs_customer_managed_key/,,,,
+4,https://www.reddit.com/r/aws/comments/zrukzp/ebs_encryption_and_kms/,,,,

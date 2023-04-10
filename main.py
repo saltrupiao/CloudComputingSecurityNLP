@@ -81,7 +81,7 @@ def visualize_data2():
     file_in["Negative Words"] = total_neg
 
     # optional export to CSV
-    file_in.to_csv("sentiment.csv")
+    file_in.to_csv("sentiment_trial1.csv")
     file_in
 
     # print(doc._.blob.polarity)

@@ -55,12 +55,12 @@ for x in doc._.blob.sentiment_assessments.assessments:
 total_pos.append(', '.join(set(positive_words)))
 total_neg.append(', '.join(set(negative_words)))
 
-df["Sentiment Score"] = url_sent_score
-df["Sentiment Label"] = url_sent_label
-df["Positive Words"] = total_pos
-df["Negative Words"] = total_neg
+df["Sentiment Score"] = pd.Series([url_sent_score])
+df["Sentiment Label"] = pd.Series([url_sent_label])
+df["Positive Words"] = pd.Series([total_pos])
+df["Negative Words"] = pd.Series([total_neg])
 
 #optional export to CSV
-df.to_csv("sentiment.csv")
+df.to_csv("sentiment_trial2.csv")
 df
 
