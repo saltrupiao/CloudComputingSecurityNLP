@@ -1,3 +1,5 @@
+# ******** REFERENCE: https://importsem.com/evaluate-sentiment-analysis-in-bulk-with-spacy-and-python/ ************
+
 # Import Statements
 import spacy
 from spacy import displacy
