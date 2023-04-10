@@ -82,7 +82,7 @@ def visualize_data2():
         file_in["Negative Words"] = pd.Series([total_neg])
 
     # optional export to CSV
-    file_in.to_csv("sentiment_trial3.csv")
+    file_in.to_csv("sentiment_trial4.csv")
     file_in
 
     # print(doc._.blob.polarity)
