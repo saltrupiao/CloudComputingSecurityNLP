@@ -75,6 +75,15 @@ def visualize_data2():
     total_pos.append(', '.join(set(positive_words)))
     total_neg.append(', '.join(set(negative_words)))
 
+    file_in["Sentiment Score"] = url_sent_score
+    file_in["Sentiment Label"] = url_sent_label
+    file_in["Positive Words"] = total_pos
+    file_in["Negative Words"] = total_neg
+
+    # optional export to CSV
+    file_in.to_csv("sentiment.csv")
+    file_in
+
     print(doc._.blob.polarity)
     print(doc._.blob.subjectivity)
     print(doc._.blob.sentiment_assessments.assessments)
