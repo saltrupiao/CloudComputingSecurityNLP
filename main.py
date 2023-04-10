@@ -38,6 +38,7 @@ def visualize_data2():
 
     for count, x in enumerate(ccURLs):
         url = x
+        print("Running and scraping for the following URL: ", url)
         headers = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'}
         res = requests.get(url,headers=headers)
         html_page = res.text
@@ -49,39 +50,39 @@ def visualize_data2():
         page_text = page_text.strip().replace("  ", "")
         page_text = "".join([s for s in page_text.splitlines(True) if s.strip("\r\n")])
 
-    doc = nlp(page_text)
-    sentiment = doc._.blob.polarity
-    sentiment = round(sentiment, 2)
+        doc = nlp(page_text)
+        sentiment = doc._.blob.polarity
+        sentiment = round(sentiment, 2)
 
-    if sentiment > 0:
-        sent_label = "Positive"
-    else:
-        sent_label = "Negative"
-
-    url_sent_label.append(sent_label)
-    url_sent_score.append(sentiment)
-
-    positive_words = []
-    negative_words = []
-
-    for x in doc._.blob.sentiment_assessments.assessments:
-        if x[1] > 0:
-            positive_words.append(x[0][0])
-        elif x[1] < 0:
-            negative_words.append(x[0][0])
+        if sentiment > 0:
+            sent_label = "Positive"
         else:
-            pass
+            sent_label = "Negative"
 
-    total_pos.append(', '.join(set(positive_words)))
-    total_neg.append(', '.join(set(negative_words)))
+        url_sent_label.append(sent_label)
+        url_sent_score.append(sentiment)
 
-    file_in["Sentiment Score"] = url_sent_score
-    file_in["Sentiment Label"] = url_sent_label
-    file_in["Positive Words"] = total_pos
-    file_in["Negative Words"] = total_neg
+        positive_words = []
+        negative_words = []
+
+        for x in doc._.blob.sentiment_assessments.assessments:
+            if x[1] > 0:
+                positive_words.append(x[0][0])
+            elif x[1] < 0:
+                negative_words.append(x[0][0])
+            else:
+                pass
+
+        total_pos.append(', '.join(set(positive_words)))
+        total_neg.append(', '.join(set(negative_words)))
+
+        file_in["Sentiment Score"] = pd.Series([url_sent_score])
+        file_in["Sentiment Label"] = pd.Series([url_sent_label])
+        file_in["Positive Words"] = pd.Series([total_pos])
+        file_in["Negative Words"] = pd.Series([total_neg])
 
     # optional export to CSV
-    file_in.to_csv("sentiment_trial1.csv")
+    file_in.to_csv("sentiment_trial3.csv")
     file_in
 
     # print(doc._.blob.polarity)
