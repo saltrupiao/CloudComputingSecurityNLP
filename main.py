@@ -92,7 +92,7 @@ def visualize_data2():
 
 
         # optional export to CSV
-        file_in.to_csv('sentiment_trial5.csv')
+        file_in.to_csv('sentiment_trial6.csv')
         file_in
 
     # print(doc._.blob.polarity)
