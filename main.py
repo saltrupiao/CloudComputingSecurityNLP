@@ -21,8 +21,12 @@ def spacy_init():
 
 
 def visualize_data():
-    doc = nlp(u'Tesla to build solar electric startup in gujrat for $70 million')
-    displacy.render(doc, style='dep', jupyter=True, options = {'distance':100})
+    page_text = "Amazon Web Services (AWS) instance types, including the high-performance Linpack (HPL) benchmark for compute performance. However, the study mostly considers single instances rather than clusters. In particular, while the cost analysis considers the cluster performance of two instance types, this performance appears to be based only on the HPL benchmark, which does not stress the network bandwidth at these sizes, and thus the analysis may not apply to communication intensive applications. The present study attempts to find a more complete look at cluster performance by considering a range of benchmarks with a more varied compute to communication load. It also expands on the previous work by considering a new AWS instance type as well as the Microsoft Azure cloud platform."
+    doc = nlp(page_text)
+    sentence_spans = list(doc.sents)
+    displacy.serve(sentence_spans, style='ent')
+
+    # displacy.render(doc, style='dep', jupyter=True, options = {'distance':100})
 
 
 def visualize_data2():
@@ -37,6 +41,9 @@ def visualize_data2():
     url_sent_label = []
     total_pos = []
     total_neg = []
+
+    print("Enumerate CCURLs Value: ")
+    print(enumerate(ccURLs))
 
     for count, x in enumerate(ccURLs):
         url = x
@@ -83,9 +90,10 @@ def visualize_data2():
         file_in["Positive Words"] = pd.Series([total_pos])
         file_in["Negative Words"] = pd.Series([total_neg])
 
-    # optional export to CSV
-    file_in.to_csv("sentiment_trial4.csv")
-    file_in
+
+        # optional export to CSV
+        file_in.to_csv('sentiment_trial5.csv')
+        file_in
 
     # print(doc._.blob.polarity)
     # print(doc._.blob.subjectivity)
