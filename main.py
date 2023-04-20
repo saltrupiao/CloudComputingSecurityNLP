@@ -11,10 +11,12 @@ import en_core_web_trf
 from bs4 import BeautifulSoup
 import requests
 
+# Initialize NLP Spacy Object using Web Framework for NLP Analysis
 nlp = spacy.load("en_core_web_sm")
 nlp = en_core_web_trf.load()
 
 
+# Init Function for Testing
 def spacy_init_list_tst():
     # doc = nlp("This is a sentence.")
     # print([(w.text, w.pos_) for w in doc])
@@ -41,23 +43,18 @@ def spacy_init_list_tst():
     print(urls)
 
 
-def visualize_data():
-    page_text = "Amazon Web Services (AWS) instance types, including the high-performance Linpack (HPL) benchmark."
-    doc = nlp(page_text)
-    sentence_spans = list(doc.sents)
-    displacy.serve(sentence_spans, style='ent')
-
-    # displacy.render(doc, style='dep', jupyter=True, options = {'distance':100})
-
-
+# Main Function of Code Execution
 def go1():
+    # Additional Import Statement and Spacy Object Creation
     import spacy
-    from spacy import displacy
     nlp = spacy.load('en_core_web_sm')
     nlp.add_pipe('spacytextblob')
 
+    # Initialize Loop Variables
     i = 0
     j = 0
+
+    # Initialize URLs Array and gather User Input for storing URLs
     urls = []
     while i == 0:
         # print("value for J: ")
@@ -77,6 +74,7 @@ def go1():
     print("URLs List: ")
     print(urls)
 
+    # Loop from Reference at top of file - perform Sentiment Analysis
     for u in urls:
         url_sent_score = []
         url_sent_label = []
